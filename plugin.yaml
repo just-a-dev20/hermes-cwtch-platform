@@ -1,0 +1,58 @@
+name: cwtch-platform
+label: Cwtch
+kind: platform
+version: 1.0.0
+requires_hermes: ">=0.23.0"
+description: >
+  Cwtch gateway adapter for Hermes Agent.
+  Runs the bot's own Cwtch profile through libCwtch (in a child process
+  with its own Tor) and relays direct conversations between Cwtch contacts
+  and the Hermes agent.
+author: just-a-dev20
+license: MIT
+homepage: https://github.com/just-a-dev20/hermes-cwtch-platform
+requires_env:
+  - name: CWTCH_PROFILE_PASSWORD
+    description: "Password that encrypts the bot's Cwtch profile on disk (the only Cwtch secret)"
+    prompt: "Cwtch profile password"
+    password: true
+  - name: CWTCH_LIB_PATH
+    description: "Path to the libCwtch library from a Cwtch release (.so, .dll or .dylib)"
+    prompt: "Path to libCwtch"
+    password: false
+optional_env:
+  - name: CWTCH_TOR_PATH
+    description: "Path to the tor binary libCwtch launches (default: tor on PATH)"
+    prompt: "Path to tor (or empty)"
+    password: false
+  - name: CWTCH_APP_DIR
+    description: "Cwtch data directory for the bot, dedicated to it (default: <HERMES_HOME>/cwtch)"
+    prompt: "Cwtch data directory (or empty)"
+    password: false
+  - name: CWTCH_PROFILE_NAME
+    description: "Display name of the bot's Cwtch profile when it is first created (default: Hermes)"
+    prompt: "Profile display name"
+    password: false
+  - name: CWTCH_ALLOWED_USERS
+    description: "Comma-separated Cwtch onion addresses allowed to talk to the bot"
+    prompt: "Allowed Cwtch addresses (comma-separated)"
+    password: false
+  - name: CWTCH_ALLOW_ALL_USERS
+    description: "Allow any contact to talk to the bot (dev only, disables the allowlist)"
+    prompt: "Allow all contacts? (true/false)"
+    password: false
+  - name: CWTCH_AUTO_ACCEPT
+    description: >-
+      Accept every incoming contact request (default: true; Hermes authorization
+      still gates each message). false accepts only CWTCH_ALLOWED_USERS and
+      ignores everyone else.
+    prompt: "Auto-accept contact requests? (true/false)"
+    password: false
+  - name: CWTCH_HOME_CHANNEL
+    description: "Cwtch onion address for cron / notification delivery"
+    prompt: "Home channel onion address (or empty)"
+    password: false
+  - name: CWTCH_HOME_CHANNEL_NAME
+    description: "Human label for the home channel"
+    prompt: "Home channel display name (or empty)"
+    password: false
