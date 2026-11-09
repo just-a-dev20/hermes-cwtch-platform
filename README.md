@@ -23,12 +23,12 @@ Cwtch has no daemon or server API. The plugin loads Cwtch's C library, libCwtch,
 ## Install
 
 ```bash
-hermes plugins install cwtch-platform --enable
+hermes plugins install just-a-dev20/hermes-cwtch-platform --enable
 hermes gateway setup        # pick Cwtch
 hermes gateway restart
 ```
 
-`cwtch-platform` is the name in the Hermes plugin catalog; `just-a-dev20/hermes-cwtch-platform` installs straight from this repository.
+The plugin is not in the Hermes plugin catalog, so Hermes installs it from this repository and warns that the source is unreviewed.
 
 ## Configure
 
